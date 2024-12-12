@@ -39,5 +39,5 @@ for files in tqdm(img_files):
     features_list = extract_features(files, model)
     image_features.append(features_list)
 
-pickle.dump(image_features, open("image_features_embedding.pkl", "wb"))
+pickle.dump(image_features, open("image_features_embedding.joblib", "wb"))
 pickle.dump(img_files, open("img_files.pkl", "wb"))
