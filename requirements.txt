@@ -1,6 +1,6 @@
 streamlit
 tensorflow
-pandas
-Pillow
-numpy
 scikit-learn
+Pillow
+joblib
+numpy
