@@ -3,6 +3,7 @@ from tensorflow.keras.preprocessing import image
 from tensorflow.keras.applications.resnet50 import ResNet50, preprocess_input
 from tensorflow.keras.layers import GlobalMaxPooling2D
 from tensorflow.keras.models import Sequential
+import numpy as np
 from numpy.linalg import norm
 from sklearn.neighbors import NearestNeighbors
 import cv2
@@ -11,6 +12,7 @@ import cv2
 features_list = joblib.load("image_features_embedding.joblib")
 img_files_list = joblib.load("img_files.joblib")
 
+# Initialize ResNet50 model
 model = ResNet50(weights="imagenet", include_top=False, input_shape=(224, 224, 3))
 model.trainable = False
 model = Sequential([model, GlobalMaxPooling2D()])
