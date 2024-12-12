@@ -1,17 +1,16 @@
-from tensorflow.keras.preprocessing import image 
+from tensorflow.keras.preprocessing import image
 from tensorflow.keras.layers import GlobalMaxPooling2D
 from tensorflow.keras.applications.resnet50 import ResNet50, preprocess_input
 from tensorflow.keras.models import Sequential
 import numpy as np
 from numpy.linalg import norm
 import os
-from tqdm import tqdm
 import joblib
+from tqdm import tqdm
 
 # Initialize ResNet50 model
 model = ResNet50(weights="imagenet", include_top=False, input_shape=(224, 224, 3))
 model.trainable = False
-
 model = Sequential([model, GlobalMaxPooling2D()])
 
 # Function to extract features
@@ -28,6 +27,7 @@ def extract_features(img_path, model):
 # List of image paths
 img_files = []
 
+# Assuming the fashion images are in the 'fashion_small/images' directory
 for fashion_images in os.listdir('fashion_small/images'):
     images_path = os.path.join('fashion_small/images', fashion_images)
     img_files.append(images_path)
