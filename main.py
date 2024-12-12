@@ -1,18 +1,16 @@
 import streamlit as st
-import tensorflow
-import pandas as pd
-from PIL import Image
 import joblib
-import numpy as np
 from tensorflow.keras.preprocessing import image
 from tensorflow.keras.applications.resnet50 import ResNet50, preprocess_input
 from tensorflow.keras.layers import GlobalMaxPooling2D
 from tensorflow.keras.models import Sequential
+import numpy as np
 from numpy.linalg import norm
 from sklearn.neighbors import NearestNeighbors
 import os
+from PIL import Image
 
-# Load the precomputed features and image paths using joblib
+# Load precomputed features and image paths using joblib
 try:
     features_list = joblib.load("image_features_embedding.joblib")
     img_files_list = joblib.load("img_files.joblib")
@@ -31,10 +29,13 @@ st.title('Fashion Recommender System')
 # Function to save uploaded file
 def save_file(uploaded_file):
     try:
+        if not os.path.exists("uploader"):
+            os.makedirs("uploader")
         with open(os.path.join("uploader", uploaded_file.name), 'wb') as f:
             f.write(uploaded_file.getbuffer())
             return 1
-    except:
+    except Exception as e:
+        st.error(f"Error saving file: {e}")
         return 0
 
 # Function to extract features from uploaded image
@@ -52,7 +53,7 @@ def extract_img_features(img_path, model):
 def recommend(features, features_list):
     neighbors = NearestNeighbors(n_neighbors=6, algorithm='brute', metric='euclidean')
     neighbors.fit(features_list)
-    distence, indices = neighbors.kneighbors([features])
+    distances, indices = neighbors.kneighbors([features])
     return indices
 
 # Upload image functionality
