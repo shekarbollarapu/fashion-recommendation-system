@@ -1,6 +1,8 @@
 streamlit
 tensorflow
+NumPy
 pandas
-Pillow
-numpy
+pillow
 scikit-learn
+opencv-python
+tqdm
