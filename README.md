@@ -89,6 +89,7 @@ pip install -r requirements.txt
 To run the web server, simply execute streamlit with the main recommender app:
 
 ```bash
+myenv\Scripts\activate
 streamlit run main.py
 ```
 
