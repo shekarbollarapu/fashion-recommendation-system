@@ -93,6 +93,7 @@ myenv\Scripts\activate
 streamlit run main.py
 ```
 project link:
+ https://fashion-recommendation-system-ko4a.onrender.com
 
 
 ## Built With
