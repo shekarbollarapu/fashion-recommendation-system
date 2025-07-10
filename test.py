@@ -9,7 +9,7 @@ from sklearn.neighbors import NearestNeighbors
 import cv2
 
 # ✅ Correct file loading
-features_list = np.load("image_features_embedding.npy", allow_pickle=True)
+features_list = np.load("image_features_embedding.pkl", allow_pickle=True)
 img_files_list = pickle.load(open("img_files.pkl", "rb"))
 
 print(np.array(features_list).shape)
