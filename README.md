@@ -92,6 +92,8 @@ To run the web server, simply execute streamlit with the main recommender app:
 myenv\Scripts\activate
 streamlit run main.py
 ```
+project link:
+
 
 ## Built With
 
